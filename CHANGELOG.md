@@ -8,3 +8,8 @@ a Changelog, and the project uses semantic versioning.
 ### Changed
 
 - Unused surface wording is under review for the next patch.
+
+## [1.0.3] - 2026-06-16
+
+### Fixed
+
