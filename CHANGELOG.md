@@ -19,3 +19,9 @@ a Changelog, and the project uses semantic versioning.
 ## [1.0.2] - 2025-10-21
 
 ### Added
+
+- Entitlement inventory parsing with per principal grouping.
+
+## [1.0.1] - 2024-07-09
+
+### Fixed
