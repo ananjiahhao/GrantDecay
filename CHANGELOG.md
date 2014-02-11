@@ -13,3 +13,9 @@ a Changelog, and the project uses semantic versioning.
 
 ### Fixed
 
+- A window with a single access line no longer reports the entitlement as
+  used; usage requires at least one match inside the window.
+
+## [1.0.2] - 2025-10-21
+
+### Added
