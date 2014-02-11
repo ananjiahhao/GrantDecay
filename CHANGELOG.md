@@ -25,3 +25,9 @@ a Changelog, and the project uses semantic versioning.
 ## [1.0.1] - 2024-07-09
 
 ### Fixed
+
+- Access log timestamps with a timezone offset parse correctly across
+  daylight saving boundaries.
+
+## [1.0.0] - 2023-09-12
+
