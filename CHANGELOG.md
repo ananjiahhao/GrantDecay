@@ -37,3 +37,9 @@ a Changelog, and the project uses semantic versioning.
 - Tests pin the window arithmetic and the decay verdicts.
 
 ## [0.9.5] - 2022-10-18
+
+### Changed
+
+- Maintenance release: documentation pass and sample refresh.
+
+## [0.9.0] - 2021-08-24
