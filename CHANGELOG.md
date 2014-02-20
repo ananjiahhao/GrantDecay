@@ -43,3 +43,9 @@ a Changelog, and the project uses semantic versioning.
 - Maintenance release: documentation pass and sample refresh.
 
 ## [0.9.0] - 2021-08-24
+
+### Added
+
+- Unused surface report: what was granted and never exercised.
+- JSON output for pipeline use.
+
