@@ -31,3 +31,9 @@ a Changelog, and the project uses semantic versioning.
 
 ## [1.0.0] - 2023-09-12
 
+### Added
+
+- Stable CLI contract for decay, window, and version, exit codes 0/1/2.
+- Tests pin the window arithmetic and the decay verdicts.
+
+## [0.9.5] - 2022-10-18
