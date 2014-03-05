@@ -54,3 +54,9 @@ a Changelog, and the project uses semantic versioning.
 ### Added
 
 - Decay verdicts per entitlement: used, unused, or unknown.
+- Report renderer with stable finding names.
+
+## [0.7.0] - 2019-07-16
+
+### Added
+
