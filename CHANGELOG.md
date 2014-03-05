@@ -49,3 +49,8 @@ a Changelog, and the project uses semantic versioning.
 - Unused surface report: what was granted and never exercised.
 - JSON output for pipeline use.
 
+## [0.8.0] - 2020-11-10
+
+### Added
+
+- Decay verdicts per entitlement: used, unused, or unknown.
