@@ -60,3 +60,9 @@ a Changelog, and the project uses semantic versioning.
 
 ### Added
 
+- Test suite covering the log reader, windows, and the CLI.
+
+## [0.6.0] - 2018-09-25
+
+### Added
+
