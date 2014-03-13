@@ -66,3 +66,9 @@ a Changelog, and the project uses semantic versioning.
 
 ### Added
 
+- Access log reader with typed lines and rejected malformed input.
+
+## [0.5.0] - 2017-06-13
+
+### Added
+
