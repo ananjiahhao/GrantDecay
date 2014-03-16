@@ -46,3 +46,17 @@ permission they were never granted) from the three that do.
 
 
 ## What it does not do
+
+- It does not connect to any identity provider, cloud API, or network service.
+  It reads two local files. There are no sockets, no HTTP, no DNS anywhere in
+  the code.
+- It does not decide that an unused permission should be removed. It reports the
+  surface and labels it with the window. The removal decision is yours, and the
+  minimum window exists precisely because that decision needs judgement.
+- It does not model permission hierarchies, wildcards, deny rules, conditions,
+  or time-bound grants. A permission is an opaque string that either matches or
+  does not.
+- It does not infer intent. A permission exercised once counts as exercised, the
+  same as one exercised a thousand times. The surface is about presence, not
+  volume.
+- It does not read real production exports. The bundled samples are authored
