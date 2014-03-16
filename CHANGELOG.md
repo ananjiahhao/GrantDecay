@@ -78,3 +78,9 @@ a Changelog, and the project uses semantic versioning.
 
 ### Added
 
+- First decay computation: granted versus used per principal.
+- Sample access log and entitlement inventory.
+
+## [0.3.0] - 2015-05-19
+
+### Added
