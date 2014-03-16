@@ -72,3 +72,9 @@ a Changelog, and the project uses semantic versioning.
 
 ### Added
 
+- Window arithmetic over rolling day ranges.
+
+## [0.4.0] - 2016-11-22
+
+### Added
+
