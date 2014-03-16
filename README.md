@@ -60,3 +60,16 @@ permission they were never granted) from the three that do.
   same as one exercised a thousand times. The surface is about presence, not
   volume.
 - It does not read real production exports. The bundled samples are authored
+  test vectors, documented as such in `samples/README.md`.
+
+
+## Install
+
+No dependencies beyond the Python standard library, Python 3.11 or newer.
+
+```
+python -m pip install -e .
+```
+
+Or run straight from the source tree without installing, which is how every
+command in this README was run:
