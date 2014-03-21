@@ -101,3 +101,17 @@ unused permission surface: 3
 
 ## unused permissions (1)
   svc-web: deploy:rollback
+
+## narrowable roles (1)
+  role:deploy: deploy:rollback
+
+## dormant principals (1)
+  svc-batch: billing:export, billing:view
+
+## ungranted use (1)
+  svc-oncall: repo:read
+```
+
+The command exits 1 because findings are present.
+
+
