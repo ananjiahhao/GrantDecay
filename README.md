@@ -128,3 +128,17 @@ Two record kinds:
 ```
 role   <role_name> <permission> [<permission> ...]
 grant  <principal>  <role_name>  [<role_name> ...]
+```
+
+A `role` record declares the permissions a role confers. A role may appear on
+more than one `role` line, and the permission sets are unioned. A `grant` record
+assigns one or more roles to a principal. A grant that names a role no `role`
+record declares is a hard error, because the export cannot then be reasoned
+about honestly.
+
+### Access log export
+
+The file must begin with a window header, then any number of events:
+
+```
+window <start> <end>
