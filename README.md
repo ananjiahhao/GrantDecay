@@ -142,3 +142,17 @@ The file must begin with a window header, then any number of events:
 
 ```
 window <start> <end>
+<date> <principal> <permission>
+```
+
+Dates are ISO-8601 (YYYY-MM-DD). The window is inclusive of both endpoints. An
+event dated outside the window is a hard error, because the log and its stated
+window would then disagree.
+
+
+## Output format, field by field
+
+The `report` command prints a header block then one section per finding kind.
+
+| Line                          | Meaning                                              |
+| ----------------------------- | ---------------------------------------------------- |
