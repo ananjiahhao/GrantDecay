@@ -156,3 +156,16 @@ The `report` command prints a header block then one section per finding kind.
 
 | Line                          | Meaning                                              |
 | ----------------------------- | ---------------------------------------------------- |
+| `grantdecay report`           | fixed banner                                         |
+| `window: <start>..<end> (N days)` | the observation window and its inclusive length  |
+| `minimum window: N days`      | the threshold below which absence is inconclusive    |
+| `conclusive: yes` or `no`     | whether the window met the minimum                   |
+| `unused permission surface: N` | count of permissions held but not exercised         |
+| `## <kind> (N)`               | one section header per finding kind, with a count    |
+| `  <subject>: <permissions>`  | one indented line per finding                        |
+
+The `surface` command prints one line per principal with granted, exercised, and
+unused counts. The `unused` command prints one finding per line, each stamped
+with the window, which is the format meant for grepping and diffing.
+
+
