@@ -169,3 +169,17 @@ unused counts. The `unused` command prints one finding per line, each stamped
 with the window, which is the format meant for grepping and diffing.
 
 
+## Reading the report, and what each finding should trigger
+
+| Finding             | What it means                                    | Action to consider                         |
+| ------------------- | ------------------------------------------------ | ------------------------------------------ |
+| `unused-permission` | a principal holds a permission it never used     | narrow the grant, or note why it is kept   |
+| `narrowable-role`   | no holder of a role used one of its permissions  | split or trim the role                     |
+| `dormant-principal` | a principal used none of its permissions         | review whether the principal is still live |
+| `ungranted-use`     | a permission was used that was never granted     | the export is stale, or a side channel     |
+
+The first three ask you to consider removing access, and the window label tells
+you how much confidence the observation carries. The fourth is different: it is
+not about removing access, it is a signal that your entitlement export does not
+match reality. Either the export was captured before a grant that has since been
+made, or something is exercising a permission through a path the entitlement
