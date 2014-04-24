@@ -197,3 +197,17 @@ GrantDecay uses a minimum window, default 30 days, set in `window.py`. When the
 observation window is shorter than the minimum, the three absence-based finding
 kinds are suppressed entirely and the report says `conclusive: no`. Only
 `ungranted-use` survives, because it depends on presence of use, which a short
+window can still establish.
+
+This is deliberately conservative. A 30 day default will miss a permission that
+is only exercised quarterly, and that is the point: it is better to under-report
+unused surface than to recommend removing a permission that a longer window would
+have shown to be in use. The 30 day figure is a policy choice, not a measurement,
+and you can override it with `--min-days`.
+
+The narrowable-role check has its own edge. A role is narrowable when some
+permission it confers was exercised by none of its holders. A role held only by a
+dormant principal would therefore look narrowable for every one of its
+permissions, which double-reports the same fact already captured by the dormant
+principal finding. The bundled sample avoids this by giving the billing role a
+second, active holder, so the role and the dormant principal are reported
