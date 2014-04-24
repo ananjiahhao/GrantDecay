@@ -224,3 +224,17 @@ In `samples/entitlements.txt`, `svc-web` is granted two roles:
 grant svc-web    deploy read
 ```
 
+The `deploy` role confers three permissions and `read` confers two:
+
+```
+role deploy   deploy:push deploy:promote deploy:rollback
+role read     repo:read logs:read
+```
+
+Expansion unions those into the effective set of five permissions: `deploy:push`,
+`deploy:promote`, `deploy:rollback`, `logs:read`, `repo:read`.
+
+In `samples/accesslog.txt`, `svc-web` produces six events inside the window, but
+they only ever name four distinct permissions: push, promote, repo:read, and
+logs:read. It never exercises `deploy:rollback`.
+
