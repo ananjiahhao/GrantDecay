@@ -238,3 +238,17 @@ In `samples/accesslog.txt`, `svc-web` produces six events inside the window, but
 they only ever name four distinct permissions: push, promote, repo:read, and
 logs:read. It never exercises `deploy:rollback`.
 
+So the surface for `svc-web` is granted 5, exercised 4, unused 1:
+
+```
+svc-web granted=5 exercised=4 unused=1
+```
+
+That single unused permission, `deploy:rollback`, becomes an `unused-permission`
+finding against `svc-web`. Because no other holder of the `deploy` role exercised
+rollback either, the same permission also produces a `narrowable-role` finding
+against `deploy`. Two findings, one root cause, reported at the two levels where
+a reviewer might act.
+
+
+## Commands
