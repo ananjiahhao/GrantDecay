@@ -265,3 +265,17 @@ a reviewer might act.
 Command:
 
 ```
+python -m grantdecay surface samples/entitlements.txt samples/accesslog.txt
+```
+
+Output captured in this session:
+
+```
+# surface for window 2026-06-01..2026-07-01 (31 days)
+# principal granted exercised unused
+svc-batch granted=2 exercised=0 unused=2
+svc-finance granted=2 exercised=2 unused=0
+svc-oncall granted=2 exercised=2 unused=0
+svc-web granted=5 exercised=4 unused=1
+```
+
