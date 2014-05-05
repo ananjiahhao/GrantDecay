@@ -252,3 +252,16 @@ a reviewer might act.
 
 
 ## Commands
+
+| Command   | Arguments                              | Purpose                                 |
+| --------- | -------------------------------------- | --------------------------------------- |
+| `surface` | entitlements, accesslog                | granted versus exercised per principal  |
+| `unused`  | entitlements, accesslog, `--min-days`  | each finding on its own line            |
+| `report`  | entitlements, accesslog, `--min-days`  | grouped report of the four kinds        |
+| `version` | none                                   | print the version                       |
+
+### surface
+
+Command:
+
+```
