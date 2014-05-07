@@ -279,3 +279,17 @@ svc-oncall granted=2 exercised=2 unused=0
 svc-web granted=5 exercised=4 unused=1
 ```
 
+### unused
+
+Command:
+
+```
+python -m grantdecay unused samples/entitlements.txt samples/accesslog.txt
+```
+
+Output captured in this session:
+
+```
+dormant-principal svc-batch [billing:export,billing:view] window=2026-06-01..2026-07-01 (31 days)
+narrowable-role role:deploy [deploy:rollback] window=2026-06-01..2026-07-01 (31 days)
+ungranted-use svc-oncall [repo:read] window=2026-06-01..2026-07-01 (31 days)
