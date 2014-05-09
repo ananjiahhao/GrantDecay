@@ -293,3 +293,17 @@ Output captured in this session:
 dormant-principal svc-batch [billing:export,billing:view] window=2026-06-01..2026-07-01 (31 days)
 narrowable-role role:deploy [deploy:rollback] window=2026-06-01..2026-07-01 (31 days)
 ungranted-use svc-oncall [repo:read] window=2026-06-01..2026-07-01 (31 days)
+unused-permission svc-web [deploy:rollback] window=2026-06-01..2026-07-01 (31 days)
+```
+
+### version
+
+Command:
+
+```
+python -m grantdecay version
+```
+
+Output captured in this session:
+
+```
