@@ -307,3 +307,16 @@ python -m grantdecay version
 Output captured in this session:
 
 ```
+grantdecay 0.1.0
+```
+
+
+## The unused surface, drawn from this run
+
+![Grouped bar chart of granted versus exercised permission counts for the four
+sample principals. svc-batch has 2 granted and 0 exercised, svc-finance 2 and 2,
+svc-oncall 2 and 2, svc-web 5 granted and 4 exercised. Amber ticks mark the
+unused gap on svc-batch and svc-web.](docs/assets/unused-surface.svg)
+
+The bars are the exact numbers the `surface` command printed above. Slate is
+granted, green is exercised, and the amber tick marks the unused gap. svc-batch
