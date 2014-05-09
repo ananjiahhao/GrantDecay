@@ -320,3 +320,17 @@ unused gap on svc-batch and svc-web.](docs/assets/unused-surface.svg)
 
 The bars are the exact numbers the `surface` command printed above. Slate is
 granted, green is exercised, and the amber tick marks the unused gap. svc-batch
+is the visibly dormant case: a full granted bar with no exercised bar at all.
+
+
+## Exit codes
+
+| Code | Meaning                                            |
+| ---- | -------------------------------------------------- |
+| 0    | clean, no findings                                 |
+| 1    | findings present                                   |
+| 2    | usage error, including a malformed input file      |
+
+The `surface` command exits 1 when any principal has unused permissions. The
+`unused` and `report` commands exit 1 when any finding is present. A malformed
+entitlement or access log file exits 2 with a diagnostic on stderr naming the
