@@ -375,3 +375,17 @@ grantdecay/
 ```
 
 
+## Glossary
+
+| Term          | Meaning in GrantDecay                                            |
+| ------------- | --------------------------------------------------------------- |
+| principal     | an identity that holds grants: a user or a service account      |
+| role          | a named bundle of permissions                                   |
+| permission    | an opaque action string, for example `deploy:push`              |
+| grant         | the assignment of one or more roles to a principal              |
+| effective set | the union of all permissions a principal holds through its roles |
+| exercised     | a permission that appears in the access log for a principal     |
+| window        | the inclusive date range the access log claims to cover         |
+| conclusive    | the window met the minimum length, so absence findings are made |
+| dormant       | a principal that exercised none of its permissions              |
+
