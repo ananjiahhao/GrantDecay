@@ -334,3 +334,17 @@ is the visibly dormant case: a full granted bar with no exercised bar at all.
 The `surface` command exits 1 when any principal has unused permissions. The
 `unused` and `report` commands exit 1 when any finding is present. A malformed
 entitlement or access log file exits 2 with a diagnostic on stderr naming the
+file and line.
+
+
+## Determinism
+
+Identical input produces byte-identical output. Findings are sorted by kind, then
+principal, then role, then permission tuple. Permissions within a finding are
+sorted. There is no wall-clock time or randomness in any output. The window dates
+that appear come only from the access log header, never from the system clock.
+
+
+## Repository layout
+
+```
