@@ -348,3 +348,16 @@ that appear come only from the access log header, never from the system clock.
 ## Repository layout
 
 ```
+grantdecay/
+  README.md                 this file
+  LICENSE                   MIT, holder "the grantdecay authors", 2026
+  CHANGELOG.md              release notes
+  .gitignore                Python ignores
+  pyproject.toml            setuptools, src layout, console script
+  src/grantdecay/
+    __init__.py             package version
+    __main__.py             enables python -m grantdecay
+    cli.py                  argparse subcommands: surface, unused, report, version
+    entitlement.py          parse the entitlement export, expand roles
+    accesslog.py            parse the access log export and its window
+    window.py               the observation window and the minimum-window guard
