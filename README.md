@@ -361,3 +361,17 @@ grantdecay/
     entitlement.py          parse the entitlement export, expand roles
     accesslog.py            parse the access log export and its window
     window.py               the observation window and the minimum-window guard
+    decay.py                the four finding kinds and the analysis
+    report.py               line-oriented renderers for each command
+  tests/
+    test_grantdecay.py      stdlib unittest suite
+  samples/
+    entitlements.txt        authored entitlement test vector
+    accesslog.txt           authored access log test vector
+    README.md               how the fixtures were constructed
+  docs/assets/
+    logo.svg                wordmark
+    unused-surface.svg      granted versus exercised bar chart from this run
+```
+
+
