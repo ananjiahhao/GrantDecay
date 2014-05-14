@@ -416,3 +416,17 @@ under one heading would blur the one distinction the tool most wants to make.
 GrantDecay expands roles to permissions but treats each permission as an opaque
 string. The rejected alternative was to model permission structure: wildcards,
 hierarchies, resource scoping. That is where real entitlement systems differ
+most from each other, and modelling it would have tied the tool to one provider
+and multiplied the ways it could be subtly wrong. An opaque string that either
+matches or does not is portable and cannot be quietly incorrect.
+
+
+## Verification
+
+All four checks required by the project standard were run in this session.
+
+Test suite:
+
+```
+python -m unittest discover -s tests -v
+```
