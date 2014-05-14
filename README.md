@@ -403,3 +403,16 @@ appears. The cost is bluntness. A 29 day window reports nothing absence-based
 even though it is barely short. That bluntness is the point.
 
 ### Separating ungranted-use from the absence findings
+
+Ungranted-use could have been folded in as a fifth column of the surface. It was
+kept separate because it depends on the opposite kind of evidence. The three
+absence findings get weaker as the window shrinks; ungranted-use does not,
+because seeing an event is proof the event happened regardless of window length.
+Mixing evidence that strengthens with observation and evidence that does not
+under one heading would blur the one distinction the tool most wants to make.
+
+### Roles expand, permissions stay opaque
+
+GrantDecay expands roles to permissions but treats each permission as an opaque
+string. The rejected alternative was to model permission structure: wildcards,
+hierarchies, resource scoping. That is where real entitlement systems differ
