@@ -389,3 +389,17 @@ grantdecay/
 | conclusive    | the window met the minimum length, so absence findings are made |
 | dormant       | a principal that exercised none of its permissions              |
 
+
+## Design decisions
+
+### A minimum window instead of a confidence score
+
+The rejected alternative was to attach a confidence percentage to each unused
+finding based on window length. That would have looked more precise and been
+less honest: a percentage invites a reader to act on a low-confidence finding
+anyway. A hard threshold that suppresses absence findings below the minimum
+forces the question, do you have enough observation, before any recommendation
+appears. The cost is bluntness. A 29 day window reports nothing absence-based
+even though it is barely short. That bluntness is the point.
+
+### Separating ungranted-use from the absence findings
