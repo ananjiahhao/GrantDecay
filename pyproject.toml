@@ -5,3 +5,4 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "grantdecay"
 version = "1.0.3"
+description = "Find privilege that was granted and never used."
