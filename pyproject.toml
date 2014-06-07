@@ -8,3 +8,5 @@ version = "1.0.3"
 description = "Find privilege that was granted and never used."
 readme = "README.md"
 requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "GrantDecay contributors" }]
