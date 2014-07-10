@@ -18,3 +18,5 @@ classifiers = [
 ]
 
 [project.scripts]
+grantdecay = "grantdecay.cli:main"
+
