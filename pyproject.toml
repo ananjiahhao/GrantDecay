@@ -20,3 +20,5 @@ classifiers = [
 [project.scripts]
 grantdecay = "grantdecay.cli:main"
 
+[tool.setuptools.packages.find]
+where = ["src"]
