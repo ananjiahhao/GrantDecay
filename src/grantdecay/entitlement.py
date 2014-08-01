@@ -24,3 +24,10 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 
+
+class EntitlementError(ValueError):
+    """Raised when the entitlement export cannot be parsed or expanded."""
+
+
+@dataclass(frozen=True)
+class Grant:
