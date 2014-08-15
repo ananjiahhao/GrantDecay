@@ -31,3 +31,10 @@ class EntitlementError(ValueError):
 
 @dataclass(frozen=True)
 class Grant:
+    """One principal and the ordered, de-duplicated roles granted to it."""
+
+    principal: str
+    roles: tuple[str, ...]
+
+
+@dataclass
