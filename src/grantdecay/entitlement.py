@@ -38,3 +38,9 @@ class Grant:
 
 
 @dataclass
+class Entitlements:
+    """The parsed entitlement export.
+
+    ``roles`` maps a role name to the sorted tuple of permissions it confers.
+    ``grants`` maps a principal to its Grant. Both are built deterministically so
+    that identical input yields identical structures.
