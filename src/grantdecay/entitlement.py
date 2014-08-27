@@ -64,3 +64,10 @@ class Entitlements:
             perms.update(self.roles.get(role, ()))
         return tuple(sorted(perms))
 
+    def role_permissions(self, role: str) -> tuple[str, ...]:
+        """Return the sorted permissions conferred by a role."""
+        return self.roles.get(role, ())
+
+
+def _split_record(line: str) -> list[str]:
+    """Split a record into whitespace-delimited fields."""
