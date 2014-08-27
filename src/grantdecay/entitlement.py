@@ -57,3 +57,10 @@ class Entitlements:
         """Return the sorted union of permissions the principal holds.
 
         A principal holds every permission conferred by every role granted to it.
+        """
+        grant = self.grants[principal]
+        perms: set[str] = set()
+        for role in grant.roles:
+            perms.update(self.roles.get(role, ()))
+        return tuple(sorted(perms))
+
