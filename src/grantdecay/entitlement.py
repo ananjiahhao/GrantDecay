@@ -51,3 +51,9 @@ class Entitlements:
 
     def principals(self) -> tuple[str, ...]:
         """Return principals in sorted order."""
+        return tuple(sorted(self.grants))
+
+    def effective_permissions(self, principal: str) -> tuple[str, ...]:
+        """Return the sorted union of permissions the principal holds.
+
+        A principal holds every permission conferred by every role granted to it.
