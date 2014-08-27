@@ -44,3 +44,10 @@ class Entitlements:
     ``roles`` maps a role name to the sorted tuple of permissions it confers.
     ``grants`` maps a principal to its Grant. Both are built deterministically so
     that identical input yields identical structures.
+    """
+
+    roles: dict[str, tuple[str, ...]] = field(default_factory=dict)
+    grants: dict[str, Grant] = field(default_factory=dict)
+
+    def principals(self) -> tuple[str, ...]:
+        """Return principals in sorted order."""
