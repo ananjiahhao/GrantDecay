@@ -71,3 +71,9 @@ class Entitlements:
 
 def _split_record(line: str) -> list[str]:
     """Split a record into whitespace-delimited fields."""
+    return line.split()
+
+
+def parse_entitlements(text: str, source: str = "<entitlement>") -> Entitlements:
+    """Parse the entitlement export text into an Entitlements structure.
+
