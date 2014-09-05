@@ -90,3 +90,10 @@ def parse_entitlements(text: str, source: str = "<entitlement>") -> Entitlements
         fields = _split_record(stripped)
         kind = fields[0]
         if kind == "role":
+            if len(fields) < 3:
+                raise EntitlementError(
+                    f"{source}:{lineno}: role record needs a name and at least "
+                    f"one permission"
+                )
+            name = fields[1]
+            perms = fields[2:]
