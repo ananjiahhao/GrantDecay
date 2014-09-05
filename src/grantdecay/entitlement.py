@@ -77,3 +77,10 @@ def _split_record(line: str) -> list[str]:
 def parse_entitlements(text: str, source: str = "<entitlement>") -> Entitlements:
     """Parse the entitlement export text into an Entitlements structure.
 
+    ``source`` is used only in error messages. Raises EntitlementError on any
+    malformed or inconsistent record.
+    """
+    role_perms: dict[str, set[str]] = {}
+    grants: dict[str, Grant] = {}
+
+    for lineno, raw in enumerate(text.splitlines(), start=1):
