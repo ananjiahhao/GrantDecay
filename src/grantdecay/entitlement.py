@@ -84,3 +84,9 @@ def parse_entitlements(text: str, source: str = "<entitlement>") -> Entitlements
     grants: dict[str, Grant] = {}
 
     for lineno, raw in enumerate(text.splitlines(), start=1):
+        stripped = raw.strip()
+        if not stripped or stripped.startswith("#"):
+            continue
+        fields = _split_record(stripped)
+        kind = fields[0]
+        if kind == "role":
