@@ -104,3 +104,9 @@ def parse_entitlements(text: str, source: str = "<entitlement>") -> Entitlements
                     f"{source}:{lineno}: grant record needs a principal and at "
                     f"least one role"
                 )
+            principal = fields[1]
+            role_names = fields[2:]
+            if principal in grants:
+                raise EntitlementError(
+                    f"{source}:{lineno}: principal {principal} granted twice; "
+                    f"merge the roles onto one line"
