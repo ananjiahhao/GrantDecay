@@ -110,3 +110,10 @@ def parse_entitlements(text: str, source: str = "<entitlement>") -> Entitlements
                 raise EntitlementError(
                     f"{source}:{lineno}: principal {principal} granted twice; "
                     f"merge the roles onto one line"
+                )
+            # De-duplicate while preserving first-seen order, then freeze.
+            seen: list[str] = []
+            for role in role_names:
+                if role not in seen:
+                    seen.append(role)
+            grants[principal] = Grant(principal=principal, roles=tuple(seen))
