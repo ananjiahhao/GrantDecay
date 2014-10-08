@@ -19,3 +19,12 @@ The parser returns the window plus the set of (principal, permission) pairs that
 were exercised, along with a per-pair count so a report can show how heavily a
 permission was used. Ordering of the input does not affect the result.
 """
+
+from __future__ import annotations
+
+from dataclasses import dataclass, field
+from datetime import date
+
+from .window import Window, WindowError
+
+
