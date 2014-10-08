@@ -46,3 +46,11 @@ class AccessLog:
     def used_permissions(self, principal: str) -> frozenset[str]:
         """Return the set of permissions the principal exercised."""
         return frozenset(
+            perm for (who, perm) in self.exercised if who == principal
+        )
+
+    def exercised_pairs(self) -> frozenset[tuple[str, str]]:
+        """Return every (principal, permission) pair that appears in the log."""
+        return frozenset(self.exercised)
+
+    def count(self, principal: str, permission: str) -> int:
