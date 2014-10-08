@@ -28,3 +28,12 @@ from datetime import date
 from .window import Window, WindowError
 
 
+class AccessLogError(ValueError):
+    """Raised when the access log export cannot be parsed."""
+
+
+@dataclass
+class AccessLog:
+    """The parsed access log.
+
+    ``window`` is the declared observation window. ``exercised`` maps a
