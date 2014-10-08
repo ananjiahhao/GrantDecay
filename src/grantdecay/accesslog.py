@@ -37,3 +37,12 @@ class AccessLog:
     """The parsed access log.
 
     ``window`` is the declared observation window. ``exercised`` maps a
+    (principal, permission) pair to the number of events recorded for it.
+    """
+
+    window: Window
+    exercised: dict[tuple[str, str], int] = field(default_factory=dict)
+
+    def used_permissions(self, principal: str) -> frozenset[str]:
+        """Return the set of permissions the principal exercised."""
+        return frozenset(
