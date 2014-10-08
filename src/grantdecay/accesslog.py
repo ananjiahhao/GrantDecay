@@ -10,3 +10,12 @@ Every subsequent record is one access event:
 
     <date> <principal> <permission>
 
+where ``<date>`` is an ISO-8601 date (YYYY-MM-DD) that must fall inside the
+declared window, inclusive of both endpoints. An event dated outside the window
+is an error, because it means the log and its stated window disagree and no
+honest conclusion can be drawn.
+
+The parser returns the window plus the set of (principal, permission) pairs that
+were exercised, along with a per-pair count so a report can show how heavily a
+permission was used. Ordering of the input does not affect the result.
+"""
