@@ -63,3 +63,12 @@ def _parse_date(value: str, source: str, lineno: int) -> date:
         return date.fromisoformat(value)
     except ValueError:
         raise AccessLogError(
+            f"{source}:{lineno}: {value!r} is not an ISO-8601 date (YYYY-MM-DD)"
+        )
+
+
+def parse_access_log(text: str, source: str = "<accesslog>") -> AccessLog:
+    """Parse the access log export text into an AccessLog.
+
+    ``source`` is used only in error messages. Raises AccessLogError on any
+    malformed record or on an event dated outside the declared window.
