@@ -54,3 +54,12 @@ class AccessLog:
         return frozenset(self.exercised)
 
     def count(self, principal: str, permission: str) -> int:
+        """Return how many events named this principal and permission."""
+        return self.exercised.get((principal, permission), 0)
+
+
+def _parse_date(value: str, source: str, lineno: int) -> date:
+    try:
+        return date.fromisoformat(value)
+    except ValueError:
+        raise AccessLogError(
