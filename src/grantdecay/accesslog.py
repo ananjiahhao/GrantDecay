@@ -81,3 +81,12 @@ def parse_access_log(text: str, source: str = "<accesslog>") -> AccessLog:
         if not stripped or stripped.startswith("#"):
             continue
         fields = stripped.split()
+        if fields[0] == "window":
+            if window is not None:
+                raise AccessLogError(
+                    f"{source}:{lineno}: window declared more than once"
+                )
+            if len(fields) != 3:
+                raise AccessLogError(
+                    f"{source}:{lineno}: window needs a start date and an end "
+                    f"date"
