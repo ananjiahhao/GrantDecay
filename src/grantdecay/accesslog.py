@@ -72,3 +72,12 @@ def parse_access_log(text: str, source: str = "<accesslog>") -> AccessLog:
 
     ``source`` is used only in error messages. Raises AccessLogError on any
     malformed record or on an event dated outside the declared window.
+    """
+    window: Window | None = None
+    exercised: dict[tuple[str, str], int] = {}
+
+    for lineno, raw in enumerate(text.splitlines(), start=1):
+        stripped = raw.strip()
+        if not stripped or stripped.startswith("#"):
+            continue
+        fields = stripped.split()
