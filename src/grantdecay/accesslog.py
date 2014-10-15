@@ -90,3 +90,12 @@ def parse_access_log(text: str, source: str = "<accesslog>") -> AccessLog:
                 raise AccessLogError(
                     f"{source}:{lineno}: window needs a start date and an end "
                     f"date"
+                )
+            start = _parse_date(fields[1], source, lineno)
+            end = _parse_date(fields[2], source, lineno)
+            try:
+                window = Window(start=start, end=end)
+            except WindowError as exc:
+                raise AccessLogError(f"{source}:{lineno}: {exc}")
+            continue
+
