@@ -430,3 +430,58 @@ Test suite:
 ```
 python -m unittest discover -s tests -v
 ```
+
+The suite reports:
+
+```
+Ran 28 tests in 0.006s
+
+OK
+```
+
+The 28 tests cover window length and endpoint logic, the conclusiveness
+threshold, entitlement parsing and role expansion, rejection of malformed and
+inconsistent records, access log parsing and window enforcement, the surface
+counts, all four finding kinds, suppression of absence findings on a short
+window, deterministic ordering, and every CLI subcommand with its exit code.
+
+The CLI was run end to end against `samples/`, and the output blocks above are
+the verbatim result. Both SVGs under `docs/assets/` parse as XML. A search of
+the whole project for the em dash character returns nothing.
+
+
+## Limitations and roadmap
+
+The limitations are structural, not temporary. GrantDecay reads two files and
+compares strings. It has no view of permission hierarchies, of time-bound or
+conditional grants, or of why a permission is held. The minimum window will miss
+rarely-exercised permissions by design, and a permission exercised once counts
+the same as one exercised constantly.
+
+Possible future work, without dates or promises: an input adapter for a common
+entitlement export format; a per-permission last-seen date so the report can show
+how long a permission has been dormant rather than a binary used-or-not; and an
+option to treat a permission exercised only near a window boundary as low
+confidence, since a single edge event is weak evidence of ongoing need.
+
+
+## The mark
+
+<img src="docs/assets/logo.svg" width="200"
+     alt="Wordmark reading GrantDecay, with grant in slate ink and decay in
+     amber, split at the compound word boundary." />
+
+The wordmark splits the name at its morpheme boundary. "grant" is set in slate,
+the colour this project uses for privilege as issued. "decay" is set in the amber
+accent, the same colour the bar chart uses to mark the unused gap. The split
+carries the whole idea of the tool: a grant that was correct when made loses
+relevance as it goes unexercised, and GrantDecay measures that gap. There is no
+pictorial mark because the tool's output is a list of findings, and a wordmark
+represents that honestly without inventing geometry.
+
+
+## License
+
+MIT. See [LICENSE](LICENSE).
+
+<!-- draft note 101 -->
