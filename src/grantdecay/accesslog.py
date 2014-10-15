@@ -99,3 +99,11 @@ def parse_access_log(text: str, source: str = "<accesslog>") -> AccessLog:
                 raise AccessLogError(f"{source}:{lineno}: {exc}")
             continue
 
+        if window is None:
+            raise AccessLogError(
+                f"{source}:{lineno}: access event before the window header; the "
+                f"window must be declared first"
+            )
+        if len(fields) != 3:
+            raise AccessLogError(
+                f"{source}:{lineno}: access event needs a date, a principal, and "
