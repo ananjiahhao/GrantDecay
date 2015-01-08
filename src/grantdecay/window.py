@@ -15,3 +15,8 @@ from __future__ import annotations
 from dataclasses import dataclass
 from datetime import date
 
+DEFAULT_MIN_DAYS = 30
+
+
+class WindowError(ValueError):
+    """Raised when a window is malformed."""
