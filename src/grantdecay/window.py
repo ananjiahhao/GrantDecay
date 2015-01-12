@@ -20,3 +20,9 @@ DEFAULT_MIN_DAYS = 30
 
 class WindowError(ValueError):
     """Raised when a window is malformed."""
+
+
+@dataclass(frozen=True)
+class Window:
+    """An inclusive observation window bounded by two dates.
+
