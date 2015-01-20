@@ -26,3 +26,8 @@ class WindowError(ValueError):
 class Window:
     """An inclusive observation window bounded by two dates.
 
+    ``start`` must not be after ``end``. Length is measured in days, inclusive of
+    both endpoints, so a window whose start equals its end has length 1.
+    """
+
+    start: date
