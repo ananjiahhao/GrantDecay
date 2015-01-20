@@ -31,3 +31,9 @@ class Window:
     """
 
     start: date
+    end: date
+
+    def __post_init__(self) -> None:
+        if self.start > self.end:
+            raise WindowError(
+                f"window start {self.start.isoformat()} is after end "
