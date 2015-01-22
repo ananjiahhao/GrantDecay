@@ -37,3 +37,8 @@ class Window:
         if self.start > self.end:
             raise WindowError(
                 f"window start {self.start.isoformat()} is after end "
+                f"{self.end.isoformat()}"
+            )
+
+    @property
+    def length_days(self) -> int:
