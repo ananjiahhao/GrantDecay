@@ -42,3 +42,8 @@ class Window:
 
     @property
     def length_days(self) -> int:
+        """Inclusive length of the window in days."""
+        return (self.end - self.start).days + 1
+
+    def contains(self, when: date) -> bool:
+        """Return True if the date falls inside the window, endpoints included."""
