@@ -47,3 +47,9 @@ class Window:
 
     def contains(self, when: date) -> bool:
         """Return True if the date falls inside the window, endpoints included."""
+        return self.start <= when <= self.end
+
+    def label(self) -> str:
+        """Return a short human label used to stamp findings with the window."""
+        return (
+            f"{self.start.isoformat()}..{self.end.isoformat()} "
