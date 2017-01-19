@@ -17,3 +17,18 @@ window is conclusive (at least ``min_days`` long). The fourth, ungranted-use,
 depends on presence of use, not absence, so it is always produced: seeing an
 event that the entitlements do not explain is evidence regardless of window
 length.
+
+Every finding carries the window label so a reader can weigh the length of
+observation behind it.
+"""
+
+from __future__ import annotations
+
+from dataclasses import dataclass
+
+from .accesslog import AccessLog
+from .entitlement import Entitlements
+from .window import Window, is_conclusive
+
+KIND_UNUSED_PERMISSION = "unused-permission"
+KIND_NARROWABLE_ROLE = "narrowable-role"
