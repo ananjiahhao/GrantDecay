@@ -91,3 +91,18 @@ def build_surface(ent: Entitlements, log: AccessLog) -> list[Surface]:
     instead.
     """
     surfaces: list[Surface] = []
+    for principal in ent.principals():
+        granted = ent.effective_permissions(principal)
+        granted_set = set(granted)
+        used = log.used_permissions(principal)
+        exercised = tuple(sorted(p for p in used if p in granted_set))
+        surfaces.append(
+            Surface(principal=principal, granted=granted, exercised=exercised)
+        )
+    return surfaces
+
+
+def analyze(
+    ent: Entitlements, log: AccessLog, min_days: int
+) -> tuple[list[Finding], bool]:
+    """Run the analysis and return (findings, conclusive).
