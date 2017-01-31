@@ -121,3 +121,17 @@ def analyze(
         granted = set(ent.effective_permissions(principal)) if principal in ent.grants else set()
         used = log.used_permissions(principal)
         ungranted = tuple(sorted(p for p in used if p not in granted))
+        if ungranted:
+            findings.append(
+                Finding(
+                    kind=KIND_UNGRANTED_USE,
+                    principal=principal,
+                    role="",
+                    permissions=ungranted,
+                    window_label=label,
+                )
+            )
+
+    if conclusive:
+        _absence_findings(ent, log, label, findings)
+
