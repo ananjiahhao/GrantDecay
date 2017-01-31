@@ -47,3 +47,18 @@ FINDING_KINDS = (
 class Finding:
     """One finding.
 
+    ``kind`` is one of the KIND_* constants. ``principal`` is the subject, or an
+    empty string for role-level findings. ``role`` is set for narrowable-role
+    findings. ``permissions`` is the sorted tuple of permissions the finding
+    concerns. ``window_label`` stamps the observation window on the finding.
+    """
+
+    kind: str
+    principal: str
+    role: str
+    permissions: tuple[str, ...]
+    window_label: str
+
+    def sort_key(self) -> tuple:
+        return (self.kind, self.principal, self.role, self.permissions)
+
