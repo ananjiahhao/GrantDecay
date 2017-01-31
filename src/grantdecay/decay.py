@@ -106,3 +106,18 @@ def analyze(
     ent: Entitlements, log: AccessLog, min_days: int
 ) -> tuple[list[Finding], bool]:
     """Run the analysis and return (findings, conclusive).
+
+    ``conclusive`` reflects whether the window met ``min_days``. When it did not,
+    absence-based findings (the first three kinds) are suppressed and only
+    ungranted-use findings are produced.
+    """
+    window = log.window
+    label = window.label()
+    conclusive = is_conclusive(window, min_days)
+    findings: list[Finding] = []
+
+    # ungranted-use: exercised but not granted. Presence-based, always produced.
+    for principal in sorted({who for (who, _perm) in log.exercised_pairs()}):
+        granted = set(ent.effective_permissions(principal)) if principal in ent.grants else set()
+        used = log.used_permissions(principal)
+        ungranted = tuple(sorted(p for p in used if p not in granted))
