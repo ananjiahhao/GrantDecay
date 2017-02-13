@@ -135,3 +135,18 @@ def analyze(
     if conclusive:
         _absence_findings(ent, log, label, findings)
 
+    findings.sort(key=lambda f: f.sort_key())
+    return findings, conclusive
+
+
+def _absence_findings(
+    ent: Entitlements, log: AccessLog, label: str, findings: list[Finding]
+) -> None:
+    """Append the three absence-based finding kinds to ``findings``."""
+    surfaces = {s.principal: s for s in build_surface(ent, log)}
+
+    for principal in ent.principals():
+        surface = surfaces[principal]
+        # dormant-principal: holds permissions but exercised none of them.
+        if surface.granted and not surface.exercised:
+            findings.append(
