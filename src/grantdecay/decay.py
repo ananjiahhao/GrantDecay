@@ -150,3 +150,18 @@ def _absence_findings(
         # dormant-principal: holds permissions but exercised none of them.
         if surface.granted and not surface.exercised:
             findings.append(
+                Finding(
+                    kind=KIND_DORMANT_PRINCIPAL,
+                    principal=principal,
+                    role="",
+                    permissions=surface.granted,
+                    window_label=label,
+                )
+            )
+            continue
+        # unused-permission: holds some it never exercised (but not fully dormant).
+        if surface.unused:
+            findings.append(
+                Finding(
+                    kind=KIND_UNUSED_PERMISSION,
+                    principal=principal,
