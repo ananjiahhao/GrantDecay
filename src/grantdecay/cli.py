@@ -24,3 +24,16 @@ from .accesslog import AccessLogError, parse_access_log
 from .decay import analyze, build_surface
 from .entitlement import EntitlementError, parse_entitlements
 from .report import render_report, render_surface, render_unused
+from .window import DEFAULT_MIN_DAYS
+
+
+def _read(path: str) -> str:
+    with open(path, "r", encoding="utf-8") as handle:
+        return handle.read()
+
+
+def _load(args: argparse.Namespace):
+    """Read and parse both exports, returning (entitlements, accesslog).
+
+    Prints a diagnostic to stderr and raises SystemExit(2) on any parse error.
+    """
