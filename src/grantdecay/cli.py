@@ -37,3 +37,16 @@ def _load(args: argparse.Namespace):
 
     Prints a diagnostic to stderr and raises SystemExit(2) on any parse error.
     """
+    try:
+        ent = parse_entitlements(_read(args.entitlements), args.entitlements)
+    except (OSError, EntitlementError) as exc:
+        print(f"error: {exc}", file=sys.stderr)
+        raise SystemExit(2)
+    try:
+        log = parse_access_log(_read(args.accesslog), args.accesslog)
+    except (OSError, AccessLogError) as exc:
+        print(f"error: {exc}", file=sys.stderr)
+        raise SystemExit(2)
+    return ent, log
+
+
