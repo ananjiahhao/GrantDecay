@@ -50,3 +50,16 @@ def _load(args: argparse.Namespace):
     return ent, log
 
 
+def _cmd_surface(args: argparse.Namespace) -> int:
+    ent, log = _load(args)
+    surfaces = build_surface(ent, log)
+    for line in render_surface(surfaces, log.window):
+        print(line)
+    any_unused = any(s.unused for s in surfaces)
+    return 1 if any_unused else 0
+
+
+def _cmd_unused(args: argparse.Namespace) -> int:
+    ent, log = _load(args)
+    findings, conclusive = analyze(ent, log, args.min_days)
+    for line in render_unused(findings, conclusive, log.window):
