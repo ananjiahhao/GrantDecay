@@ -75,3 +75,16 @@ def _cmd_report(args: argparse.Namespace) -> int:
     return 1 if findings else 0
 
 
+def _cmd_version(args: argparse.Namespace) -> int:
+    print(f"grantdecay {__version__}")
+    return 0
+
+
+def _add_inputs(parser: argparse.ArgumentParser) -> None:
+    parser.add_argument("entitlements", help="path to the entitlement export")
+    parser.add_argument("accesslog", help="path to the access log export")
+
+
+def _add_min_days(parser: argparse.ArgumentParser) -> None:
+    parser.add_argument(
+        "--min-days",
