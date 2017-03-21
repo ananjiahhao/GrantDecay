@@ -63,3 +63,15 @@ def _cmd_unused(args: argparse.Namespace) -> int:
     ent, log = _load(args)
     findings, conclusive = analyze(ent, log, args.min_days)
     for line in render_unused(findings, conclusive, log.window):
+        print(line)
+    return 1 if findings else 0
+
+
+def _cmd_report(args: argparse.Namespace) -> int:
+    ent, log = _load(args)
+    findings, conclusive = analyze(ent, log, args.min_days)
+    for line in render_report(findings, conclusive, log.window, args.min_days):
+        print(line)
+    return 1 if findings else 0
+
+
