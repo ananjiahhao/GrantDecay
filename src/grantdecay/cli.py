@@ -88,3 +88,16 @@ def _add_inputs(parser: argparse.ArgumentParser) -> None:
 def _add_min_days(parser: argparse.ArgumentParser) -> None:
     parser.add_argument(
         "--min-days",
+        type=int,
+        default=DEFAULT_MIN_DAYS,
+        help=(
+            f"minimum window length in days before absence is treated as "
+            f"conclusive (default {DEFAULT_MIN_DAYS})"
+        ),
+    )
+
+
+def build_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(
+        prog="grantdecay",
+        description="Find privilege that was granted and never used.",
