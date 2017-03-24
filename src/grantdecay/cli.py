@@ -101,3 +101,16 @@ def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         prog="grantdecay",
         description="Find privilege that was granted and never used.",
+    )
+    sub = parser.add_subparsers(dest="command", required=True)
+
+    p_surface = sub.add_parser(
+        "surface", help="print the granted versus exercised surface per principal"
+    )
+    _add_inputs(p_surface)
+    p_surface.set_defaults(func=_cmd_surface)
+
+    p_unused = sub.add_parser(
+        "unused", help="print each unused-privilege finding, one per line"
+    )
+    _add_inputs(p_unused)
