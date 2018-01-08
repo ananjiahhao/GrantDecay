@@ -10,3 +10,14 @@ Three renderers:
 Every renderer returns a list of lines with no trailing newline so the CLI can
 join them and diffs stay stable.
 """
+
+from __future__ import annotations
+
+from .decay import (
+    FINDING_KINDS,
+    KIND_DORMANT_PRINCIPAL,
+    KIND_NARROWABLE_ROLE,
+    KIND_UNGRANTED_USE,
+    KIND_UNUSED_PERMISSION,
+    Finding,
+    Surface,
