@@ -21,3 +21,14 @@ from .decay import (
     KIND_UNUSED_PERMISSION,
     Finding,
     Surface,
+)
+from .window import Window
+
+_KIND_TITLES = {
+    KIND_UNUSED_PERMISSION: "unused permissions",
+    KIND_NARROWABLE_ROLE: "narrowable roles",
+    KIND_DORMANT_PRINCIPAL: "dormant principals",
+    KIND_UNGRANTED_USE: "ungranted use",
+}
+
+
