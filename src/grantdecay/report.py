@@ -32,3 +32,15 @@ _KIND_TITLES = {
 }
 
 
+def render_surface(surfaces: list[Surface], window: Window) -> list[str]:
+    """Render the granted versus exercised surface, one line per principal."""
+    lines = [f"# surface for window {window.label()}"]
+    lines.append("# principal granted exercised unused")
+    for surface in surfaces:
+        lines.append(
+            f"{surface.principal} "
+            f"granted={len(surface.granted)} "
+            f"exercised={len(surface.exercised)} "
+            f"unused={len(surface.unused)}"
+        )
+    return lines
