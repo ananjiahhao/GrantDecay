@@ -55,3 +55,14 @@ def _format_finding(finding: Finding) -> str:
     return f"{finding.kind} {subject} [{perms}] window={finding.window_label}"
 
 
+def render_unused(
+    findings: list[Finding], conclusive: bool, window: Window
+) -> list[str]:
+    """Render each finding on its own line, prefixed by its kind."""
+    lines: list[str] = []
+    if not conclusive:
+        lines.append(
+            f"# window {window.label()} is shorter than the minimum; "
+            f"absence-based findings suppressed"
+        )
+    for finding in findings:
