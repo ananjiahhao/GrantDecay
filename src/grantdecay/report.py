@@ -44,3 +44,14 @@ def render_surface(surfaces: list[Surface], window: Window) -> list[str]:
             f"unused={len(surface.unused)}"
         )
     return lines
+
+
+def _format_finding(finding: Finding) -> str:
+    perms = ",".join(finding.permissions)
+    if finding.kind == KIND_NARROWABLE_ROLE:
+        subject = f"role:{finding.role}"
+    else:
+        subject = finding.principal
+    return f"{finding.kind} {subject} [{perms}] window={finding.window_label}"
+
+
