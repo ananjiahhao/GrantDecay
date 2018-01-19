@@ -66,3 +66,15 @@ def render_unused(
             f"absence-based findings suppressed"
         )
     for finding in findings:
+        lines.append(_format_finding(finding))
+    if not findings:
+        lines.append("# no findings")
+    return lines
+
+
+def render_report(
+    findings: list[Finding],
+    conclusive: bool,
+    window: Window,
+    min_days: int,
+) -> list[str]:
