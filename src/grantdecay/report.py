@@ -78,3 +78,14 @@ def render_report(
     window: Window,
     min_days: int,
 ) -> list[str]:
+    """Render a grouped report, one block per finding kind."""
+    lines = ["grantdecay report"]
+    lines.append(f"window: {window.label()}")
+    lines.append(f"minimum window: {min_days} days")
+    if conclusive:
+        lines.append("conclusive: yes")
+    else:
+        lines.append(
+            "conclusive: no (absence-based findings suppressed; only "
+            "ungranted-use is reported)"
+        )
