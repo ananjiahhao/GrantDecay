@@ -89,3 +89,14 @@ def render_report(
             "conclusive: no (absence-based findings suppressed; only "
             "ungranted-use is reported)"
         )
+
+    unused_count = sum(
+        len(f.permissions)
+        for f in findings
+        if f.kind in (KIND_UNUSED_PERMISSION, KIND_DORMANT_PRINCIPAL)
+    )
+    lines.append(f"unused permission surface: {unused_count}")
+    lines.append("")
+
+    by_kind: dict[str, list[Finding]] = {kind: [] for kind in FINDING_KINDS}
+    for finding in findings:
