@@ -35,3 +35,18 @@ def _read(path: str) -> str:
 class WindowTests(unittest.TestCase):
     def test_length_is_inclusive(self):
         w = Window(date(2026, 6, 1), date(2026, 6, 1))
+        self.assertEqual(w.length_days, 1)
+        w2 = Window(date(2026, 6, 1), date(2026, 7, 1))
+        self.assertEqual(w2.length_days, 31)
+
+    def test_start_after_end_rejected(self):
+        with self.assertRaises(WindowError):
+            Window(date(2026, 7, 1), date(2026, 6, 1))
+
+    def test_contains_endpoints(self):
+        w = Window(date(2026, 6, 1), date(2026, 6, 30))
+        self.assertTrue(w.contains(date(2026, 6, 1)))
+        self.assertTrue(w.contains(date(2026, 6, 30)))
+        self.assertFalse(w.contains(date(2026, 5, 31)))
+        self.assertFalse(w.contains(date(2026, 7, 1)))
+
