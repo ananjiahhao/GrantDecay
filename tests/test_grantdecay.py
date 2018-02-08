@@ -50,3 +50,18 @@ class WindowTests(unittest.TestCase):
         self.assertFalse(w.contains(date(2026, 5, 31)))
         self.assertFalse(w.contains(date(2026, 7, 1)))
 
+    def test_conclusiveness_threshold(self):
+        short = Window(date(2026, 6, 1), date(2026, 6, 10))
+        self.assertFalse(is_conclusive(short, DEFAULT_MIN_DAYS))
+        long = Window(date(2026, 6, 1), date(2026, 7, 1))
+        self.assertTrue(is_conclusive(long, DEFAULT_MIN_DAYS))
+
+
+class EntitlementTests(unittest.TestCase):
+    def test_role_expansion_unions_permissions(self):
+        ent = parse_entitlements(
+            "role a p1 p2\nrole a p2 p3\ngrant u a\n"
+        )
+        self.assertEqual(
+            ent.effective_permissions("u"), ("p1", "p2", "p3")
+        )
