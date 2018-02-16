@@ -65,3 +65,18 @@ class EntitlementTests(unittest.TestCase):
         self.assertEqual(
             ent.effective_permissions("u"), ("p1", "p2", "p3")
         )
+
+    def test_multiple_roles_union(self):
+        ent = parse_entitlements(
+            "role a p1\nrole b p2\ngrant u a b\n"
+        )
+        self.assertEqual(ent.effective_permissions("u"), ("p1", "p2"))
+
+    def test_unknown_record_kind_rejected(self):
+        with self.assertRaises(EntitlementError):
+            parse_entitlements("frob x y\n")
+
+    def test_grant_of_undeclared_role_rejected(self):
+        with self.assertRaises(EntitlementError):
+            parse_entitlements("grant u missing\n")
+
