@@ -80,3 +80,18 @@ class EntitlementTests(unittest.TestCase):
         with self.assertRaises(EntitlementError):
             parse_entitlements("grant u missing\n")
 
+    def test_double_grant_rejected(self):
+        with self.assertRaises(EntitlementError):
+            parse_entitlements("role a p1\ngrant u a\ngrant u a\n")
+
+    def test_comments_and_blanks_ignored(self):
+        ent = parse_entitlements("# c\n\nrole a p1\ngrant u a\n")
+        self.assertEqual(ent.principals(), ("u",))
+
+
+class AccessLogTests(unittest.TestCase):
+    def test_missing_window_rejected(self):
+        with self.assertRaises(AccessLogError):
+            parse_access_log("2026-06-01 u p\n")
+
+    def test_event_before_window_header_rejected(self):
