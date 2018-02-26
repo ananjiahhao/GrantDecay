@@ -95,3 +95,18 @@ class AccessLogTests(unittest.TestCase):
             parse_access_log("2026-06-01 u p\n")
 
     def test_event_before_window_header_rejected(self):
+        with self.assertRaises(AccessLogError):
+            parse_access_log("2026-06-01 u p\nwindow 2026-06-01 2026-07-01\n")
+
+    def test_event_outside_window_rejected(self):
+        text = "window 2026-06-01 2026-06-30\n2026-07-05 u p\n"
+        with self.assertRaises(AccessLogError):
+            parse_access_log(text)
+
+    def test_counts_accumulate(self):
+        text = (
+            "window 2026-06-01 2026-07-01\n"
+            "2026-06-02 u p\n2026-06-03 u p\n"
+        )
+        log = parse_access_log(text)
+        self.assertEqual(log.count("u", "p"), 2)
