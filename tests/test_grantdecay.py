@@ -110,3 +110,18 @@ class AccessLogTests(unittest.TestCase):
         )
         log = parse_access_log(text)
         self.assertEqual(log.count("u", "p"), 2)
+
+    def test_bad_date_rejected(self):
+        with self.assertRaises(AccessLogError):
+            parse_access_log("window 2026-13-01 2026-07-01\n")
+
+
+class SurfaceTests(unittest.TestCase):
+    def setUp(self):
+        self.ent = parse_entitlements(_read(ENT_PATH), ENT_PATH)
+        self.log = parse_access_log(_read(LOG_PATH), LOG_PATH)
+
+    def test_surface_counts(self):
+        surfaces = {s.principal: s for s in build_surface(self.ent, self.log)}
+        web = surfaces["svc-web"]
+        # granted five, exercised four (rollback unused).
