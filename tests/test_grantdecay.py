@@ -125,3 +125,18 @@ class SurfaceTests(unittest.TestCase):
         surfaces = {s.principal: s for s in build_surface(self.ent, self.log)}
         web = surfaces["svc-web"]
         # granted five, exercised four (rollback unused).
+        self.assertEqual(len(web.granted), 5)
+        self.assertEqual(len(web.exercised), 4)
+        self.assertEqual(web.unused, ("deploy:rollback",))
+
+    def test_dormant_principal_has_zero_exercised(self):
+        surfaces = {s.principal: s for s in build_surface(self.ent, self.log)}
+        self.assertEqual(surfaces["svc-batch"].exercised, ())
+
+
+class AnalyzeTests(unittest.TestCase):
+    def setUp(self):
+        self.ent = parse_entitlements(_read(ENT_PATH), ENT_PATH)
+        self.log = parse_access_log(_read(LOG_PATH), LOG_PATH)
+
+    def test_all_four_kinds_present(self):
