@@ -53,3 +53,13 @@ class Window:
         """Return a short human label used to stamp findings with the window."""
         return (
             f"{self.start.isoformat()}..{self.end.isoformat()} "
+            f"({self.length_days} days)"
+        )
+
+
+def is_conclusive(window: Window, min_days: int = DEFAULT_MIN_DAYS) -> bool:
+    """Return True if the window is long enough to draw a conclusion.
+
+    A window shorter than ``min_days`` is inconclusive: grantdecay will not label
+    permissions as unused from it.
+    """
