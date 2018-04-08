@@ -140,3 +140,18 @@ class AnalyzeTests(unittest.TestCase):
         self.log = parse_access_log(_read(LOG_PATH), LOG_PATH)
 
     def test_all_four_kinds_present(self):
+        findings, conclusive = analyze(self.ent, self.log, DEFAULT_MIN_DAYS)
+        self.assertTrue(conclusive)
+        kinds = {f.kind for f in findings}
+        self.assertIn(KIND_UNUSED_PERMISSION, kinds)
+        self.assertIn(KIND_NARROWABLE_ROLE, kinds)
+        self.assertIn(KIND_DORMANT_PRINCIPAL, kinds)
+        self.assertIn(KIND_UNGRANTED_USE, kinds)
+
+    def test_dormant_principal_identified(self):
+        findings, _ = analyze(self.ent, self.log, DEFAULT_MIN_DAYS)
+        dormant = [f for f in findings if f.kind == KIND_DORMANT_PRINCIPAL]
+        self.assertEqual([f.principal for f in dormant], ["svc-batch"])
+
+    def test_narrowable_role_is_deploy_rollback(self):
+        findings, _ = analyze(self.ent, self.log, DEFAULT_MIN_DAYS)
