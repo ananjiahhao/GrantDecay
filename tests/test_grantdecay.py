@@ -170,3 +170,18 @@ class AnalyzeTests(unittest.TestCase):
     def test_short_window_suppresses_absence_findings(self):
         short_log = parse_access_log(
             "window 2026-06-01 2026-06-05\n2026-06-02 svc-oncall repo:read\n"
+        )
+        findings, conclusive = analyze(self.ent, short_log, DEFAULT_MIN_DAYS)
+        self.assertFalse(conclusive)
+        # Only ungranted-use survives on a short window.
+        self.assertTrue(all(f.kind == KIND_UNGRANTED_USE for f in findings))
+
+    def test_findings_are_sorted_deterministically(self):
+        f1, _ = analyze(self.ent, self.log, DEFAULT_MIN_DAYS)
+        f2, _ = analyze(self.ent, self.log, DEFAULT_MIN_DAYS)
+        self.assertEqual([f.sort_key() for f in f1], [f.sort_key() for f in f2])
+
+
+class CliTests(unittest.TestCase):
+    def _run(self, argv):
+        buf = io.StringIO()
