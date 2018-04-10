@@ -155,3 +155,18 @@ class AnalyzeTests(unittest.TestCase):
 
     def test_narrowable_role_is_deploy_rollback(self):
         findings, _ = analyze(self.ent, self.log, DEFAULT_MIN_DAYS)
+        narrow = [f for f in findings if f.kind == KIND_NARROWABLE_ROLE]
+        self.assertEqual(len(narrow), 1)
+        self.assertEqual(narrow[0].role, "deploy")
+        self.assertEqual(narrow[0].permissions, ("deploy:rollback",))
+
+    def test_ungranted_use_is_repo_read(self):
+        findings, _ = analyze(self.ent, self.log, DEFAULT_MIN_DAYS)
+        ung = [f for f in findings if f.kind == KIND_UNGRANTED_USE]
+        self.assertEqual(len(ung), 1)
+        self.assertEqual(ung[0].principal, "svc-oncall")
+        self.assertEqual(ung[0].permissions, ("repo:read",))
+
+    def test_short_window_suppresses_absence_findings(self):
+        short_log = parse_access_log(
+            "window 2026-06-01 2026-06-05\n2026-06-02 svc-oncall repo:read\n"
