@@ -8,3 +8,6 @@ presented as production data.
 
 Four roles and four principals, constructed so each finding kind fires once:
 
+- `deploy` confers `deploy:push`, `deploy:promote`, `deploy:rollback`. No holder
+  exercises `deploy:rollback` in the window, so the role is narrowable.
+- `billing` is held by `svc-batch` (dormant) and `svc-finance` (active).
