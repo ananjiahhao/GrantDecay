@@ -15,3 +15,7 @@ Four roles and four principals, constructed so each finding kind fires once:
   itself is not narrowable, leaving `deploy` as the only narrowable role.
 - `svc-batch` records no events, so that principal is fully dormant.
 - `svc-oncall` holds the `oncall` role but exercises `repo:read`, which no role
+  grants it, producing an ungranted-use finding.
+
+## accesslog.txt
+
