@@ -19,3 +19,6 @@ Four roles and four principals, constructed so each finding kind fires once:
 
 ## accesslog.txt
 
+A 31 day window (2026-06-01 to 2026-07-01 inclusive), chosen to sit one day over
+the 30 day default minimum so the run is conclusive. Events were written by hand
+to match the entitlement design above:
