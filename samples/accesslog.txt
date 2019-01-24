@@ -1,3 +1,7 @@
 # grantdecay access log export, test vector.
 # Format:
 #   window <start> <end>          required first record, ISO-8601 dates
+#   <date> <principal> <permission>   one access event, date inside the window
+#
+# The window is 31 days, one day over the default 30 day minimum, so the run is
+# conclusive and absence-based findings are produced.
