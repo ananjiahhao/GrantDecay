@@ -1,0 +1,3 @@
+# grantdecay access log export, test vector.
+# Format:
+#   window <start> <end>          required first record, ISO-8601 dates
