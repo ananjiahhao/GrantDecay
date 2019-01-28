@@ -5,3 +5,7 @@
 #
 # The window is 31 days, one day over the default 30 day minimum, so the run is
 # conclusive and absence-based findings are produced.
+
+window 2026-06-01 2026-07-01
+
+# svc-web exercises push, promote, and both reads. It never exercises
