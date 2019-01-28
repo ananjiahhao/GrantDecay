@@ -12,3 +12,7 @@ window 2026-06-01 2026-07-01
 # deploy:rollback, which becomes an unused permission and makes deploy narrowable.
 2026-06-02 svc-web deploy:push
 2026-06-05 svc-web deploy:promote
+2026-06-09 svc-web repo:read
+2026-06-11 svc-web logs:read
+2026-06-20 svc-web deploy:push
+2026-06-28 svc-web deploy:promote
