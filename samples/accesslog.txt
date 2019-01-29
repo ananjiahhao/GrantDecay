@@ -16,3 +16,7 @@ window 2026-06-01 2026-07-01
 2026-06-11 svc-web logs:read
 2026-06-20 svc-web deploy:push
 2026-06-28 svc-web deploy:promote
+
+# svc-batch records no events at all: it is fully dormant.
+
+# svc-finance exercises both billing permissions, so the billing role stays in
