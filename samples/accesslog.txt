@@ -20,3 +20,7 @@ window 2026-06-01 2026-07-01
 # svc-batch records no events at all: it is fully dormant.
 
 # svc-finance exercises both billing permissions, so the billing role stays in
+# use and is not narrowable.
+2026-06-04 svc-finance billing:view
+2026-06-18 svc-finance billing:export
+2026-06-29 svc-finance billing:view
