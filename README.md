@@ -484,4 +484,4 @@ represents that honestly without inventing geometry.
 
 MIT. See [LICENSE](LICENSE).
 
-<!-- draft note 666 -->
+<!-- draft note 667 -->
