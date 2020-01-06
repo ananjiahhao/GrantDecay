@@ -1,0 +1,3 @@
+# grantdecay entitlement export, test vector.
+# Format:
+#   role  <role_name> <permission> [<permission> ...]
