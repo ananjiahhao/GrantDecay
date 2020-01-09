@@ -1,3 +1,7 @@
 # grantdecay entitlement export, test vector.
 # Format:
 #   role  <role_name> <permission> [<permission> ...]
+#   grant <principal>  <role_name> [<role_name> ...]
+#
+# Roles confer permissions. Grants assign roles to principals.
+
