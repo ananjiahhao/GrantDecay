@@ -9,3 +9,7 @@
 # holder in the sample log, so this role is narrowable.
 role deploy   deploy:push deploy:promote deploy:rollback
 
+# The read role confers two read permissions.
+role read     repo:read logs:read
+
+# The billing role confers billing actions. svc-finance exercises both, so the
