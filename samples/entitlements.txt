@@ -5,3 +5,7 @@
 #
 # Roles confer permissions. Grants assign roles to principals.
 
+# The deploy role confers three permissions. rollback is never exercised by any
+# holder in the sample log, so this role is narrowable.
+role deploy   deploy:push deploy:promote deploy:rollback
+
