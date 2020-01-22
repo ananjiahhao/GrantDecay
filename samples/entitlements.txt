@@ -13,3 +13,7 @@ role deploy   deploy:push deploy:promote deploy:rollback
 role read     repo:read logs:read
 
 # The billing role confers billing actions. svc-finance exercises both, so the
+# role itself is not narrowable even though svc-batch holds it while dormant.
+role billing  billing:view billing:export
+
+# The oncall role confers an incident action plus a read.
