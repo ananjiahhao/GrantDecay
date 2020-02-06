@@ -22,3 +22,7 @@ role oncall   incident:ack logs:read
 # svc-web deploys and reads. It exercises most, leaving one unused permission.
 grant svc-web    deploy read
 
+# svc-batch is granted billing but never does anything in the window: fully
+# dormant.
+grant svc-batch  billing
+
