@@ -17,3 +17,8 @@ role read     repo:read logs:read
 role billing  billing:view billing:export
 
 # The oncall role confers an incident action plus a read.
+role oncall   incident:ack logs:read
+
+# svc-web deploys and reads. It exercises most, leaving one unused permission.
+grant svc-web    deploy read
+
