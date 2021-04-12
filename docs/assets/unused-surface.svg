@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Palette reason: the subject is access review, comparing what was granted
+  against what was used. Granted permission counts use a neutral slate #334155
+  (the baseline, the status quo). Exercised counts use green #15803d (active,
+  legitimate use). The single accent amber #b45309 marks the unused gap, the one
+  thing a reviewer should look at first. Two core colours plus one accent, no
+  AI-default indigo or violet, flat fills only.
+
