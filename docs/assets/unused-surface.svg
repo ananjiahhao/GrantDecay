@@ -14,3 +14,11 @@
 
   Motion: none. A static bar chart reads correctly on a README.
 -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 300" role="img"
+     aria-labelledby="title desc" width="480" height="300">
+  <title id="title">Granted versus exercised permissions per principal</title>
+  <desc>Grouped bar chart. For each of four principals a slate bar shows granted
+    permission count and a green bar shows exercised count. svc-batch has 2
+    granted and 0 exercised, so its full grant is dormant. svc-finance 2 and 2,
+    svc-oncall 2 and 2, svc-web 5 granted and 4 exercised with one unused. The
+    amber tick marks the unused gap on svc-web and svc-batch.</desc>
