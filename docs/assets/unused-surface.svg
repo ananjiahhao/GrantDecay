@@ -7,3 +7,10 @@
   thing a reviewer should look at first. Two core colours plus one accent, no
   AI-default indigo or violet, flat fills only.
 
+  Numbers: taken verbatim from `python -m grantdecay surface` against
+  samples/entitlements.txt and samples/accesslog.txt in this session.
+  svc-batch granted=2 exercised=0; svc-finance granted=2 exercised=2;
+  svc-oncall granted=2 exercised=2; svc-web granted=5 exercised=4.
+
+  Motion: none. A static bar chart reads correctly on a README.
+-->
