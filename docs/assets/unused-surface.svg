@@ -29,3 +29,10 @@
   <line x1="64" y1="40" x2="64" y2="250" stroke="#94a3b8" stroke-width="1"/>
   <line x1="64" y1="250" x2="440" y2="250" stroke="#94a3b8" stroke-width="1"/>
 
+  <!-- y gridline labels at 0, 2, 4 permissions (40px each). -->
+  <text x="56" y="254" text-anchor="end" font-size="11"
+        font-family="-apple-system, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif"
+        fill="#475569">0</text>
+  <text x="56" y="174" text-anchor="end" font-size="11"
+        font-family="-apple-system, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif"
+        fill="#475569">2</text>
