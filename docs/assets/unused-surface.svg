@@ -22,3 +22,10 @@
     granted and 0 exercised, so its full grant is dormant. svc-finance 2 and 2,
     svc-oncall 2 and 2, svc-web 5 granted and 4 exercised with one unused. The
     amber tick marks the unused gap on svc-web and svc-batch.</desc>
+
+  <rect x="0" y="0" width="480" height="300" fill="#ffffff"/>
+
+  <!-- Axes. x baseline at y=250, y axis at x=64. Scale: 40px per permission. -->
+  <line x1="64" y1="40" x2="64" y2="250" stroke="#94a3b8" stroke-width="1"/>
+  <line x1="64" y1="250" x2="440" y2="250" stroke="#94a3b8" stroke-width="1"/>
+
