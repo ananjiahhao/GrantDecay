@@ -36,3 +36,11 @@
   <text x="56" y="174" text-anchor="end" font-size="11"
         font-family="-apple-system, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif"
         fill="#475569">2</text>
+  <text x="56" y="94" text-anchor="end" font-size="11"
+        font-family="-apple-system, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif"
+        fill="#475569">4</text>
+  <text x="16" y="149" font-size="11" transform="rotate(-90 16 149)"
+        font-family="-apple-system, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif"
+        fill="#475569">permissions</text>
+
+  <!-- svc-batch: granted 2 (h=80), exercised 0. group centre x=112 -->
