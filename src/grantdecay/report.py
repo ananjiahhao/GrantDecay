@@ -100,3 +100,24 @@ def render_report(
 
     by_kind: dict[str, list[Finding]] = {kind: [] for kind in FINDING_KINDS}
     for finding in findings:
+        by_kind[finding.kind].append(finding)
+
+    for kind in FINDING_KINDS:
+        group = by_kind[kind]
+        lines.append(f"## {_KIND_TITLES[kind]} ({len(group)})")
+        if not group:
+            lines.append("  none")
+        else:
+            for finding in group:
+                subject = (
+                    f"role:{finding.role}"
+                    if kind == KIND_NARROWABLE_ROLE
+                    else finding.principal
+                )
+                perms = ", ".join(finding.permissions)
+                lines.append(f"  {subject}: {perms}")
+        lines.append("")
+
+    # Drop the trailing blank line for a stable tail.
+    if lines and lines[-1] == "":
+        lines.pop()
