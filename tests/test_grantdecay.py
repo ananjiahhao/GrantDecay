@@ -185,3 +185,35 @@ class AnalyzeTests(unittest.TestCase):
 class CliTests(unittest.TestCase):
     def _run(self, argv):
         buf = io.StringIO()
+        with redirect_stdout(buf):
+            code = cli.main(argv)
+        return code, buf.getvalue()
+
+    def test_version(self):
+        code, out = self._run(["version"])
+        self.assertEqual(code, 0)
+        self.assertIn("grantdecay", out)
+
+    def test_report_exits_one_on_findings(self):
+        code, out = self._run(["report", ENT_PATH, LOG_PATH])
+        self.assertEqual(code, 1)
+        self.assertIn("grantdecay report", out)
+        self.assertIn("dormant principals (1)", out)
+
+    def test_surface_exits_one_on_unused(self):
+        code, out = self._run(["surface", ENT_PATH, LOG_PATH])
+        self.assertEqual(code, 1)
+        self.assertIn("svc-batch", out)
+
+    def test_unused_exits_one_on_findings(self):
+        code, out = self._run(["unused", ENT_PATH, LOG_PATH])
+        self.assertEqual(code, 1)
+        self.assertIn("ungranted-use", out)
+
+    def test_deterministic_report_output(self):
+        _, out1 = self._run(["report", ENT_PATH, LOG_PATH])
+        _, out2 = self._run(["report", ENT_PATH, LOG_PATH])
+        self.assertEqual(out1, out2)
+
+
+if __name__ == "__main__":
