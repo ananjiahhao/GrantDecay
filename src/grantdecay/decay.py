@@ -165,3 +165,33 @@ def _absence_findings(
                 Finding(
                     kind=KIND_UNUSED_PERMISSION,
                     principal=principal,
+                    role="",
+                    permissions=surface.unused,
+                    window_label=label,
+                )
+            )
+
+    # narrowable-role: a permission conferred by a role that no principal holding
+    # the role ever exercised. Such permissions could be removed from the role.
+    for role in sorted(ent.roles):
+        holders = [
+            p for p in ent.principals() if role in ent.grants[p].roles
+        ]
+        if not holders:
+            continue
+        role_perms = ent.role_permissions(role)
+        exercised_by_holders: set[str] = set()
+        for holder in holders:
+            exercised_by_holders.update(log.used_permissions(holder))
+        narrowable = tuple(
+            p for p in role_perms if p not in exercised_by_holders
+        )
+        if narrowable:
+            findings.append(
+                Finding(
+                    kind=KIND_NARROWABLE_ROLE,
+                    principal="",
+                    role=role,
+                    permissions=narrowable,
+                    window_label=label,
+                )
