@@ -482,6 +482,3 @@ represents that honestly without inventing geometry.
 
 ## License
 
-MIT. See [LICENSE](LICENSE).
-
-<!-- draft note 1421 -->
