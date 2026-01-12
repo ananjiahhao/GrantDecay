@@ -121,3 +121,6 @@ def render_report(
     # Drop the trailing blank line for a stable tail.
     if lines and lines[-1] == "":
         lines.pop()
+    return lines
+
+# draft note 1756
