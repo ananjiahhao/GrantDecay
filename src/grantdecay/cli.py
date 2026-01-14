@@ -114,3 +114,29 @@ def build_parser() -> argparse.ArgumentParser:
         "unused", help="print each unused-privilege finding, one per line"
     )
     _add_inputs(p_unused)
+    _add_min_days(p_unused)
+    p_unused.set_defaults(func=_cmd_unused)
+
+    p_report = sub.add_parser(
+        "report", help="print a grouped report of the four finding kinds"
+    )
+    _add_inputs(p_report)
+    _add_min_days(p_report)
+    p_report.set_defaults(func=_cmd_report)
+
+    p_version = sub.add_parser("version", help="print the version")
+    p_version.set_defaults(func=_cmd_version)
+
+    return parser
+
+
+def main(argv: list[str] | None = None) -> int:
+    parser = build_parser()
+    args = parser.parse_args(argv)
+    return args.func(args)
+
+
+if __name__ == "__main__":
+    sys.exit(main())
+
+# draft note 1758
