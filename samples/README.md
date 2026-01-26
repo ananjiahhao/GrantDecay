@@ -28,3 +28,4 @@ to match the entitlement design above:
 - `svc-oncall` exercises its granted permissions plus `repo:read`.
 
 To regenerate the numbers quoted in the README, run the CLI against these two
+files as shown there.
