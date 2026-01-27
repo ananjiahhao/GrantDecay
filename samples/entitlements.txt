@@ -33,5 +33,3 @@ grant svc-finance billing
 # svc-oncall handles incidents. It also exercises a permission it was never
 # granted (repo:read), which the log will reveal as ungranted use.
 grant svc-oncall oncall
-
-<!-- draft note 1754 -->
