@@ -84,3 +84,19 @@ a Changelog, and the project uses semantic versioning.
 ## [0.3.0] - 2015-05-19
 
 ### Added
+
+- Entitlement model with principal, resource, and grant date.
+
+## [0.2.0] - 2014-10-28
+
+### Added
+
+- CLI entry point and a single decay entry point.
+
+## [0.1.0] - 2013-08-13
+
+### Added
+
+- Initial entitlement reader over a plain text inventory.
+
+<!-- draft note 1761 -->
