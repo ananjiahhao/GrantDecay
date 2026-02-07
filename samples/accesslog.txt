@@ -24,3 +24,10 @@ window 2026-06-01 2026-07-01
 2026-06-04 svc-finance billing:view
 2026-06-18 svc-finance billing:export
 2026-06-29 svc-finance billing:view
+
+# svc-oncall exercises everything it holds, plus repo:read which it was never
+# granted. repo:read surfaces as ungranted use.
+2026-06-03 svc-oncall incident:ack
+2026-06-07 svc-oncall logs:read
+2026-06-15 svc-oncall repo:read
+2026-06-27 svc-oncall incident:ack
