@@ -195,3 +195,6 @@ def _absence_findings(
                     permissions=narrowable,
                     window_label=label,
                 )
+            )
+
+# draft note 1774
