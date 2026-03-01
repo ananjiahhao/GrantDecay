@@ -117,3 +117,23 @@ def parse_entitlements(text: str, source: str = "<entitlement>") -> Entitlements
                 if role not in seen:
                     seen.append(role)
             grants[principal] = Grant(principal=principal, roles=tuple(seen))
+        else:
+            raise EntitlementError(
+                f"{source}:{lineno}: unknown record kind {kind!r}; expected "
+                f"'role' or 'grant'"
+            )
+
+    roles = {name: tuple(sorted(perms)) for name, perms in role_perms.items()}
+
+    # Every granted role must be declared, or expansion is dishonest.
+    for grant in grants.values():
+        for role in grant.roles:
+            if role not in roles:
+                raise EntitlementError(
+                    f"{source}: principal {grant.principal} is granted role "
+                    f"{role!r} which no role record declares"
+                )
+
+    return Entitlements(roles=roles, grants=grants)
+
+# draft note 1776
