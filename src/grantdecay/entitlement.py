@@ -136,4 +136,4 @@ def parse_entitlements(text: str, source: str = "<entitlement>") -> Entitlements
 
     return Entitlements(roles=roles, grants=grants)
 
-# draft note 1776
+# draft note 1780
