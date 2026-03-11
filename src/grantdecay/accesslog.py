@@ -107,3 +107,25 @@ def parse_access_log(text: str, source: str = "<accesslog>") -> AccessLog:
         if len(fields) != 3:
             raise AccessLogError(
                 f"{source}:{lineno}: access event needs a date, a principal, and "
+                f"a permission"
+            )
+        when = _parse_date(fields[0], source, lineno)
+        if not window.contains(when):
+            raise AccessLogError(
+                f"{source}:{lineno}: event dated {when.isoformat()} falls outside "
+                f"the window {window.start.isoformat()}..{window.end.isoformat()}"
+            )
+        principal = fields[1]
+        permission = fields[2]
+        key = (principal, permission)
+        exercised[key] = exercised.get(key, 0) + 1
+
+    if window is None:
+        raise AccessLogError(
+            f"{source}: no window header found; the log must begin with "
+            f"'window <start> <end>'"
+        )
+
+    return AccessLog(window=window, exercised=exercised)
+
+# draft note 1777
