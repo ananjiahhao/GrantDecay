@@ -99,4 +99,4 @@ a Changelog, and the project uses semantic versioning.
 
 - Initial entitlement reader over a plain text inventory.
 
-<!-- draft note 1770 -->
+<!-- draft note 1781 -->
