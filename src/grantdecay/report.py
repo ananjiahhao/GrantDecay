@@ -123,4 +123,4 @@ def render_report(
         lines.pop()
     return lines
 
-# draft note 1771
+# draft note 1778
