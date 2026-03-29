@@ -127,5 +127,3 @@ def parse_access_log(text: str, source: str = "<accesslog>") -> AccessLog:
         )
 
     return AccessLog(window=window, exercised=exercised)
-
-# draft note 1777
