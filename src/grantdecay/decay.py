@@ -196,5 +196,3 @@ def _absence_findings(
                     window_label=label,
                 )
             )
-
-# draft note 1785
