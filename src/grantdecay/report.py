@@ -122,5 +122,3 @@ def render_report(
     if lines and lines[-1] == "":
         lines.pop()
     return lines
-
-# draft note 1778
