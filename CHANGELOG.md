@@ -98,5 +98,3 @@ a Changelog, and the project uses semantic versioning.
 ### Added
 
 - Initial entitlement reader over a plain text inventory.
-
-<!-- draft note 1790 -->
