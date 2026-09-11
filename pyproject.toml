@@ -24,3 +24,8 @@ grantdecay = "grantdecay.cli:main"
 where = ["src"]
 
 [tool.setuptools.package-dir]
+"" = "src"
+
+[project.urls]
+Homepage = "https://github.com/ananjiahhao/GrantDecay"
+Source = "https://github.com/ananjiahhao/GrantDecay"
