@@ -1,7 +1,7 @@
 <div align="center">
 
 <img src="docs/assets/banner.svg" width="100%"
-     alt="GrantDecay banner: find privilege that was granted and never used, with a verdicts card listing used, unused, and unknown entitlements." />
+     alt="GrantDecay banner: granted versus exercised permissions per principal, with the unused gap marked for the batch and web services." />
 
 # GrantDecay
 
