@@ -8,6 +8,7 @@ a Changelog, and the project uses semantic versioning.
 ### Changed
 
 - Unused surface wording is under review for the next patch.
+- A grant-age histogram is being sketched.
 
 ## [1.0.3] - 2026-06-16
 
