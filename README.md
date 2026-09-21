@@ -1,4 +1,11 @@
+<div align="center">
+
+<img src="docs/assets/banner.svg" width="100%"
+     alt="GrantDecay banner: find privilege that was granted and never used, with a verdicts card listing used, unused, and unknown entitlements." />
+
 # GrantDecay
+
+</div>
 
 > 3 unused permissions across an observation window of 31 days
 > (2026-06-01 to 2026-07-01), measured against the bundled sample export.
